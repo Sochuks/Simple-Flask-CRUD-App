@@ -10,16 +10,17 @@ DB_NAME = 'testdb'
 DB_USER = 'postgres'
 DB_PASS = 'guest@dmin'
 
-conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, passsword=DB_PASS, host=DB_HOST)
+conn = psycopg2.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
 
 
 @app.route('/')
 
 def Index():
-    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursors)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     s = "SELECT*FROM student"
     cur.execute(s) # Execute SQL
-    return render_template('index.html')
+    list_user = cur.fetchall()
+    return render_template('index.html', list_user=list_user)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -57,6 +57,20 @@
             <a href="/delete/1" class="btn btn-danger btn-small">Delete</a>
           </td>
         </tr>
+
+        <!--display users from student table -->
+        {% for row in list_user %}
+        <tr>
+          <td>{{row[0]}}</td>
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td with="130">
+            <a href="/edit/{{row[0]}}" class="btn btn-secondary btn-small">Edit</a>
+            <a href="/delete/{{row[0]}}" class="btn btn-danger btn-small">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
