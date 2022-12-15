@@ -9,10 +9,24 @@
   <!--Form container-->
   <div class="col-md-4">
 
+    <!--Alert Message-->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for messages in messages %}
+        <div class="alert alert-success alert-dissmissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="close" data-dissmiss="alert" aria-label="Close" >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <div class="card card-body">
 
       <!--Form-->
-      <form action="" method="post">
+      <form action="{{url_for('add_student')}}" method="POST">
         <div class="form-group">
           <input type="text" class="form-control" name="fname" placeholder="First Name">
         </div>
@@ -47,17 +61,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Samson</td>
-          <td>Alariwo</td>
-          <td>samslariwo@gmail.com</td>
-          <td>
-            <a href="/edit/1" class="btn btn-secondary btn-small">Edit</a>
-            <a href="/delete/1" class="btn btn-danger btn-small">Delete</a>
-          </td>
-        </tr>
-
         <!--display users from student table -->
         {% for row in list_user %}
         <tr>
