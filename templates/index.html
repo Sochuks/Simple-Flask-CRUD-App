@@ -12,11 +12,11 @@
     <!--Alert Message-->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        {% for messages in messages %}
+        {% for message in messages %}
         <div class="alert alert-success alert-dissmissible fade show" role="alert">
           {{message}}
           <button type="button" class="close" data-dissmiss="alert" aria-label="Close" >
-            <span aria-hidden="true"></span>
+            <span aria-hidden="true">X</span>
           </button>
         </div>
         {% endfor %}
@@ -50,7 +50,7 @@
 <!--Table container-->
   <div class="col-md-8">
 
-    <table class="table table-striped table-bordered" style="width:100%">
+    <table id="display_table" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <td>ID</td>

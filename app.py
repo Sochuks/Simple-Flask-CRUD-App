@@ -32,7 +32,7 @@ def add_student():
         email = request.form['email']
         cur.execute("INSERT INTO students (fname, lname, email) VALUES (%s,%s,%s)", (fname, lname, email))
         conn.commit()
-        flash ('User added successfuly')
+        flash ('User Added Successfuly')
         return redirect(url_for('Index'))
 
 
