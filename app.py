@@ -16,6 +16,9 @@ conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, passsword=DB_PASS, host=DB
 @app.route('/')
 
 def Index():
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursors)
+    s = "SELECT*FROM student"
+    cur.execute(s) # Execute SQL
     return render_template('index.html')
 
 if __name__ == '__main__':
