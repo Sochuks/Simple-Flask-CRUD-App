@@ -62,6 +62,13 @@ def update_student(id):
         flash ('User Updated Successfuly')
         return redirect(url_for('Index'))
 
+@app.route('/delete/<string:id>', methods=['POST','GET'])
+def delete_student(id):
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cur.execute('DELETE FROM students WHERE id = {0}'.format(id))
+    conn.commit()
+    flash ('User Deleted Successfuly')
+    return redirect(url_for('Index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
