@@ -5,10 +5,10 @@ import psycopg2.extras
 app = Flask(__name__)
 app.secret_key = 'crud-flask-students'
 
-DB_HOST = 'localhost'
-DB_NAME = 'testdb'
-DB_USER = 'postgres'
-DB_PASS = 'guest@dmin'
+DB_HOST = 'dpg-cehhp46n6mpg3l78ba7g-a'
+DB_NAME = 'testdb_0hx0'
+DB_USER = 'testdb_0hx0_user'
+DB_PASS = '8FaHHQY5ADuxqjkEjXxGLF7XjPthVJIB'
 
 conn = psycopg2.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
 
