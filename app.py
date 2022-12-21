@@ -5,10 +5,10 @@ import psycopg2.extras
 app = Flask(__name__)
 app.secret_key = 'crud-flask-students'
 
-DB_HOST = 'dpg-cehhp46n6mpg3l78ba7g-a'
-DB_NAME = 'testdb_0hx0'
-DB_USER = 'testdb_0hx0_user'
-DB_PASS = '8FaHHQY5ADuxqjkEjXxGLF7XjPthVJIB'
+DB_HOST = 'dpg-cehjldmn6mpg3l7rbtgg-a'
+DB_NAME = 'testdb_render'
+DB_USER = 'testdb_render_user'
+DB_PASS = 'RPcYGNAj2Xeb9CkPJIXUpEmNtvT7GPQQ'
 
 conn = psycopg2.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
 
@@ -17,13 +17,6 @@ conn = psycopg2.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=D
 
 def Index():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    c = """CREATE TABLE IF NOT EXISTS students (
-    id serial PRIMARY KEY,
-	fname VARCHAR ( 40 ) NOT NULL,
-	lname VARCHAR ( 40 ) NOT NULL,
-	email VARCHAR ( 40 ) NOT NULL
-);"""
-    cur.execute(c) #create table if not exist
     s = "SELECT*FROM students"
     cur.execute(s) # Execute SQL
     list_user = cur.fetchall()
