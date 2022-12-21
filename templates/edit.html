@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+
+    <h3 class="text-center">Edit Student Details</h3>
+
+    <div class="card card-body">
+
+      <!--Form-->
+      <form action="" method="POST">
+        <div class="form-group">
+          <input type="text" name="fname" value="{{student.fname}}" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="lname" value="{{student.lname}}" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" value="{{student.email}}" autocomplete="off">
+        </div>
+
+        <button class="btn btn-success btn-block" name="button">Update</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

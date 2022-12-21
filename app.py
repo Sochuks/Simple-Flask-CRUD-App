@@ -22,7 +22,7 @@ def Index():
     list_user = cur.fetchall()
     return render_template('index.html', list_user=list_user)
 
-@app.route('/add_student', methods={"POST"})
+@app.route('/add_student', methods=["POST"])
 
 def add_student():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -34,6 +34,17 @@ def add_student():
         conn.commit()
         flash ('User Added Successfuly')
         return redirect(url_for('Index'))
+
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+
+def get_student(id):
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cur.execute("SELECT*FROM students WHERE id = %s", (id))
+    data = cur.fetchall()
+    cur.close()
+    print(data[0])
+    return render_template('edit.html', student = data[0])
+
 
 
 
