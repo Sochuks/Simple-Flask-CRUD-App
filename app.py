@@ -17,6 +17,13 @@ conn = psycopg2.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=D
 
 def Index():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    c = """CREATE TABLE IF NOT EXISTS students (
+    id serial PRIMARY KEY,
+	fname VARCHAR ( 40 ) NOT NULL,
+	lname VARCHAR ( 40 ) NOT NULL,
+	email VARCHAR ( 40 ) NOT NULL
+);"""
+    cur.execute(c) #create table if not exist
     s = "SELECT*FROM students"
     cur.execute(s) # Execute SQL
     list_user = cur.fetchall()
