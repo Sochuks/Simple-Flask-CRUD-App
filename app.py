@@ -45,7 +45,22 @@ def get_student(id):
     print(data[0])
     return render_template('edit.html', student = data[0])
 
-
+@app.route('/update/<id>', methods=['POST'])
+def update_student(id):
+    if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
+        email = request.form['email']
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("""UPDATE students
+                        SET fname = %s,
+                              lname = %s,
+                              email = %s
+                        WHERE id = %s
+        """, (fname, lname, email, id))
+        conn.commit()
+        flash ('User Updated Successfuly')
+        return redirect(url_for('Index'))
 
 
 if __name__ == '__main__':
